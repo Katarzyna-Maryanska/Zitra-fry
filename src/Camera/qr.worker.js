@@ -8,7 +8,10 @@ self.addEventListener('message', (event) => {
 
     try {
         const { data, width, height } = event.data;
-        const code = jsQR(data, width, height);
+
+        const code = jsQR(data, width, height, {
+            inversionAttempts: "dontInvert"
+        });
 
         if (code) {
             self.postMessage(code);
