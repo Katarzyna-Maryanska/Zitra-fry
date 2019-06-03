@@ -1,3 +1,10 @@
 .scanner {
     text-align: center;
 }
+
+.orders-scroll {
+    max-height: 200px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}

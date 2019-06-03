@@ -61,7 +61,6 @@ class Camera extends Component {
     }
 
     componentWillUnmount() {
-        console.log('um')
         clearInterval(this.interval);
         this.video.srcObject = null;
         this.canvas = null;

@@ -4,5 +4,10 @@
 
 .form-control-scanner {
     display: inline-block;
-    width: 50vw;
+    width: 60vw;
+    margin-right: 10px;
+}
+
+.btn-outline-secondary {
+    border-color: #ced4da;
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import './DeliveryRoute.css';
+import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
 import {http} from '../Service/http';
 
 class DeliveryRoute extends React.Component{
@@ -48,31 +50,33 @@ class DeliveryRoute extends React.Component{
 
     render() {
         return (
-            <div className="list-group">
-                <div className="list-group-item list-group-item-secondary">
+            <ListGroup>
+                <ListGroup.Item variant="secondary">
                     Adresy dostaw
-                </div>
-                <div className="list-group">
+                </ListGroup.Item>
+                <ListGroup  className="route-scroll">
                     {this.state.route && this.state.route.pickUpPoints.map((pickUpPoint, index) => {
                         return (
-                            <div key={index}>
-                                <li className="list-group-item list-group-item-action flex">
+                            <ListGroup key={index}>
+                                <ListGroup.Item
+                                    variant="action"
+                                    className="flex">
                                     {pickUpPoint.street} {pickUpPoint.buildingNumber}<br/>
                                     {pickUpPoint.postalCode} {pickUpPoint.city}
-                                    <button
+                                    <Button
+                                        variant={"primary"}
                                         disabled={this.state.visitedPickUpPoints.includes(pickUpPoint.id)}
                                         onClick={(e) => {
                                             e.preventDefault();
                                             this.checkIn(pickUpPoint.id);
-                                        }}
-                                        className="btn btn-primary">Już jestem!
-                                    </button>
-                                </li>
-                            </div>
+                                        }}>Już jestem!
+                                    </Button>
+                                </ListGroup.Item>
+                            </ListGroup>
                         )
                     })}
-                </div>
-            </div>
+                </ListGroup>
+            </ListGroup>
         );
     }
 }

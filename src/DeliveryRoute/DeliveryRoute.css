@@ -5,10 +5,18 @@
 
 .list-group-item:first-child {
     border-radius: unset;
+    text-align: center;
 }
 
 .flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.route-scroll {
+    max-height: 370px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
 }

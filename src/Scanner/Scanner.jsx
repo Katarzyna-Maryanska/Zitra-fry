@@ -15,22 +15,19 @@ class Scanner extends React.Component {
         };
     }
 
-    componentDidMount() {
-        // this.getProduct()
-    }
-
     getProduct(code) {
         http
             .get(`/api/deliverers/deliveries/human-ids/${code}/products`)
-            .then(response => console.log(response.data))
-            .then(response => this.setState({products: response.data}))
+            .then((response) => {
+                this.setState({products: response.data})
+            })
             .catch()
     }
 
     cameraCodeHandler = (code) => {
         if (this.state.lastScannedCode !== code) {
             this.setState({lastScannedCode: code});
-            this.getProduct(code);
+            this.getProduct(code).bind(this);
         }
     };
 
@@ -38,16 +35,18 @@ class Scanner extends React.Component {
         return(
             <div className="scanner">
                 <Camera getCodeCallback={this.cameraCodeHandler}/>
-                <InputArea getProduct={this.getProduct}/>
+                <InputArea getProduct= {(code) => this.getProduct(code)}/>
                 <ListGroup>
                     <ListGroup.Item variant="secondary">Zamówienie</ListGroup.Item>
-                    {this.state.products.map((item, index) => {
-                        return (
-                            <div key={index}>
-                                <ListGroup.Item variant="action">{item.name}</ListGroup.Item>
-                            </div>
-                        )})
-                    }
+                    <ListGroup className="orders-scroll">
+                        {this.state.products.map((item, index) => {
+                            return (
+                                <div key={index}>
+                                    <ListGroup.Item variant="action">{item.name}</ListGroup.Item>
+                                </div>
+                            )})
+                        }
+                    </ListGroup>
                 </ListGroup>
             </div>
         )

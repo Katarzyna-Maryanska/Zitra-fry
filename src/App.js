@@ -37,7 +37,7 @@ class App extends React.Component {
                     user: user,
                     loadingUser: false,
                 });
-                console.log(user);
+                // console.log(user);
 
                 userService.getStore()
                     .then((store) => {
