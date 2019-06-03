@@ -13,7 +13,7 @@ class Navigation extends React.Component{
                     <Link className="nav-link" to="/fry/trasa">Trasa</Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Link className="nav-link" to="/frygi/skaner">Skaner</Link>
+                    <Link className="nav-link" to="/fry/skaner">Skaner</Link>
                 </Nav.Item>
             </Nav>
         );
