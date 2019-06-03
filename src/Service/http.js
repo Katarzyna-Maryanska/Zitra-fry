@@ -1,7 +1,10 @@
 import axios from 'axios';
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 export const http = axios.create({
-    baseURL: 'https://zitra.online',
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {
         'Content-Type': 'application/json'
     }
