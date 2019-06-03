@@ -37,12 +37,11 @@ class App extends React.Component {
                     user: user,
                     loadingUser: false,
                 });
-                // console.log(user);
 
                 userService.getStore()
                     .then((store) => {
                         this.setState({store: store});
-                        history.push('/trasa');
+                        history.push('/fry/trasa');
                     })
             })
             .catch(() => {
@@ -54,17 +53,16 @@ class App extends React.Component {
 
     onLogout() {
         this.setState({user: null});
-        history.push('/login')
+        history.push('/fry/login')
     }
 
     render() {
-        // console.log(this.state);
         return (
             <Router history={history}>
                 <Switch>
                     {!this.state.loadingUser && !this.state.user &&
                         <Route
-                            path='/login'
+                            path='/fry/login'
                             component={() => <LoginPage onLogin={this.onLogin.bind(this)}/>}
                         />
                     }
@@ -72,8 +70,8 @@ class App extends React.Component {
                         <Header/>
                         <Logout onLogout={this.onLogout.bind(this)}/>
                         <Route exact path='/' component={DeliveryRoute} />
-                        <Route path='/trasa' component={() => <DeliveryRoute store={this.state.store}/>} />
-                        <Route path='/skaner' component={Scanner} />
+                        <Route path='/fry/trasa' component={() => <DeliveryRoute store={this.state.store}/>} />
+                        <Route path='/fry/skaner' component={Scanner} />
                         <Navigation/>
                     </Authorized>
                     <Route path='*' component={NotFound} />

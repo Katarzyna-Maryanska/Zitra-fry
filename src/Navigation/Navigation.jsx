@@ -10,10 +10,10 @@ class Navigation extends React.Component{
         return (
             <Nav className="nav-bottom" justify variant="tabs">
                 <Nav.Item>
-                    <Link className="nav-link" to="/trasa">Trasa</Link>
+                    <Link className="nav-link" to="/fry/trasa">Trasa</Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Link className="nav-link" to="/skaner">Skaner</Link>
+                    <Link className="nav-link" to="/frygi/skaner">Skaner</Link>
                 </Nav.Item>
             </Nav>
         );

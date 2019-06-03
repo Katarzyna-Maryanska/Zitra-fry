@@ -4,7 +4,7 @@ import history from '../Service/history';
 class Authorized extends React.Component {
     componentDidMount() {
         if (!this.props.loggedIn) {
-            history.push('/login');
+            history.push('/fry/login');
         }
     }
 
