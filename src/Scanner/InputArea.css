@@ -1,13 +1,13 @@
-.input-area {
-    margin: 15px;
-}
-
 .form-control-scanner {
     display: inline-block;
-    width: 60vw;
+    width: 50vw;
     margin-right: 10px;
 }
 
 .btn-outline-secondary {
     border-color: #ced4da;
+}
+
+.ok-button {
+    margin-right: 10px;
 }

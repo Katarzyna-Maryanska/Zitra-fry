@@ -2,9 +2,13 @@
     text-align: center;
 }
 
-.orders-scroll {
-    max-height: 200px;
+.order-group-scroll {
+    max-height: 250px;
     margin-bottom: 10px;
-    overflow:scroll;
-    -webkit-overflow-scrolling: touch;
+    overflow: scroll;
+    overflow-scrolling: touch;
+}
+
+.enter-code-button {
+    margin-left: 20px;
 }

@@ -15,6 +15,12 @@ class InputArea extends React.Component{
     onSubmitHandler = (event) => {
         event.preventDefault();
         this.props.getProduct(this.state.code);
+        this.props.showOrderText();
+    };
+
+    onCancelHandler = (event) => {
+        event.preventDefault();
+        this.props.hideInputArea();
     };
 
     render() {
@@ -30,9 +36,14 @@ class InputArea extends React.Component{
                     }}
                 />
                 <Button
+                    className="ok-button"
                     variant={"outline-secondary"}
                     onClick={this.onSubmitHandler}
                 >OK</Button>
+                <Button
+                    variant={"outline-secondary"}
+                    onClick={this.onCancelHandler}
+                >Anuluj</Button>
             </div>
         );
     }

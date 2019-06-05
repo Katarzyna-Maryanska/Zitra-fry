@@ -33,7 +33,8 @@ class Camera extends Component {
         navigator.mediaDevices
             .getUserMedia({
                 video: {
-                    facingMode: 'environment'
+                    facingMode: "environment",
+                    // orientation: "landscape"
                 },
                 audio: false,
             })
@@ -68,10 +69,10 @@ class Camera extends Component {
 
     render() {
         return (
-            <div>
-                <video className={'camera'} autoPlay></video>
-                <canvas className={'hide'}></canvas>
-                <div id="code"></div>
+            <div className="camera-container">
+                <video className="camera" autoPlay></video>
+                <canvas className="hide"></canvas>
+                {/*<div id="code"></div>*/}
             </div>
         )
     }

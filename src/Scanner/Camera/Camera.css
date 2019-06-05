@@ -2,7 +2,12 @@
     display: none;
 }
 
+.camera-container {
+    height: 30vh;
+}
+
 .camera {
     height: 30vh;
-    margin-top: 20px;
+    -webkit-clip-path: inset(20px 0px 20px 0px);
+    clip-path: inset(20px 0px 20px 0px);
 }
