@@ -18,32 +18,27 @@ class InputArea extends React.Component{
         this.props.showOrderText();
     };
 
-    onCancelHandler = (event) => {
-        event.preventDefault();
-        this.props.hideInputArea();
-    };
-
     render() {
         return (
             <div className="input-area">
-                <FormControl
-                    className="form-control-scanner"
-                    placeholder="Wpisz kod zamówienia"
-                    aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default"
-                    onChange={(e) => {
-                        this.setState({ code: e.target.value})
-                    }}
-                />
-                <Button
-                    className="ok-button"
-                    variant={"outline-secondary"}
-                    onClick={this.onSubmitHandler}
-                >OK</Button>
-                <Button
-                    variant={"outline-secondary"}
-                    onClick={this.onCancelHandler}
-                >Anuluj</Button>
+                <InputGroup className="mb-3">
+                    <FormControl
+                        className="form-control-scanner"
+                        placeholder="Wpisz kod zamówienia"
+                        aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default"
+                        onChange={(e) => {
+                            this.setState({ code: e.target.value})
+                        }}
+                    />
+                    <InputGroup.Append>
+                        <Button
+                            variant={"outline-secondary"}
+                            onClick={this.onSubmitHandler}
+                        >OK</Button>
+                    </InputGroup.Append>
+                </InputGroup>
+
             </div>
         );
     }

@@ -2,12 +2,8 @@
     display: none;
 }
 
-.camera-container {
-    height: 30vh;
-}
-
 .camera {
     height: 30vh;
-    -webkit-clip-path: inset(20px 0px 20px 0px);
-    clip-path: inset(20px 0px 20px 0px);
+    -webkit-clip-path: inset(27px 0px 20px 0px);
+    clip-path: inset(27px 0px 20px 0px);
 }

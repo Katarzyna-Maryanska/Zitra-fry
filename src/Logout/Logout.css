@@ -2,10 +2,19 @@
     justify-content: center;
 }
 
-.btn-outline-light {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 11px;
+.logout-btn {
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*margin: 12px 20px;*/
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+
+}
+
+.fas {
+    font-size: 25px;
+    color: white;
 }
 

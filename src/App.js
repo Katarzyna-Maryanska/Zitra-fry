@@ -53,7 +53,7 @@ class App extends React.Component {
 
     onLogout() {
         this.setState({user: null});
-        history.push('/fry/login')
+        history.push('/fry/login');
     }
 
     render() {
@@ -67,8 +67,7 @@ class App extends React.Component {
                         />
                     }
                     <Authorized loggedIn={!!this.state.user}>
-                        <Header/>
-                        <Logout onLogout={this.onLogout.bind(this)}/>
+                        <Header onLogout={() => this.onLogout()}/>
                         <Route exact path='/' component={DeliveryRoute} />
                         <Route path='/fry/trasa' component={() => <DeliveryRoute store={this.state.store}/>} />
                         <Route path='/fry/skaner' component={Scanner} />

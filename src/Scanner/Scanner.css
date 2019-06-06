@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.scan-code-text {
+    margin-top: 0.5rem;
+}
+
 .order-group-scroll {
     max-height: 250px;
     margin-bottom: 10px;
@@ -9,6 +13,12 @@
     overflow-scrolling: touch;
 }
 
-.enter-code-button {
-    margin-left: 20px;
+.order-container {
+    top: 257px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
 }
+

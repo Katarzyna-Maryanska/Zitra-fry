@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Camera from "./Camera/Camera";
 import {http} from "../Service/http";
 import InputArea from "./InputArea";
-import divWithClassName from "react-bootstrap/es/utils/divWithClassName";
 
 class Scanner extends React.Component {
 
@@ -14,8 +13,7 @@ class Scanner extends React.Component {
         this.state = {
             products: [],
             lastScannedCode: '',
-            showInputArea: false,
-            showEnterCodeButton: true,
+            showInputArea: true,
         };
     }
 
@@ -35,19 +33,8 @@ class Scanner extends React.Component {
         }
     };
 
-    onEnterCodeClickHandler = () => {
-        this.setState({ showInputArea: true });
-    };
-
-    onCancelCodeClickHandler = () => {
-        this.setState({
-            showInputArea: false
-        });
-    };
-
     onAcceptCodeClickHandler = () => {
         this.setState({
-            showEnterCodeButton: false,
             showInputArea: false
         })
     };
@@ -55,31 +42,21 @@ class Scanner extends React.Component {
     render() {
         return(
             <div className="scanner">
+                {/*<label className="scan-code-text">Zeskanuj kod QR</label>*/}
                 <Camera getCodeCallback={this.cameraCodeHandler}/>
 
-                <ListGroup>
+                <ListGroup className="order-container">
+                    {this.state.showInputArea ?
+                        <InputArea
+                            getProduct={(code) => this.getProduct(code)}
+                            showOrderText={() => this.onAcceptCodeClickHandler()}
+                        /> : null
+                    }
+                    {!this.state.showInputArea &&
                     <ListGroup.Item
-                        variant="secondary">
-                        {this.state.showInputArea ?
-                            <InputArea
-                                getProduct={(code) => this.getProduct(code)}
-                                hideInputArea={() => this.onCancelCodeClickHandler()}
-                                showOrderText={() => this.onAcceptCodeClickHandler()}
-                            /> : null
-                        }
-                        {!this.state.showInputArea &&
-                            <div>
-                                Zeskanuj kod QR
-                                {this.state.showEnterCodeButton ?
-                                    <Button
-                                        className="enter-code-button"
-                                        variant={"light"}
-                                        onClick={this.onEnterCodeClickHandler}
-                                    >Wpisz</Button> : null
-                                }
-                            </div>
-                        }
-                    </ListGroup.Item>
+                        variant="secondary"
+                        onClick={this.onAcceptCodeClickHandler}>
+                    Zamówienie</ListGroup.Item>}
 
                     <ListGroup className="order-group-scroll">
                         {this.state.products.map((item, index) => {

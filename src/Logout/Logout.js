@@ -22,10 +22,14 @@ class Logout extends React.Component {
 
     render() {
         return (
-            <Button
-                variant={"outline-light"}
-                onClick={this.onLogoutHandler}
-            >Wyloguj</Button>
+            <a
+                href={"#"}
+                className="logout-btn"
+                // variant={"outline-light"}
+                onClick={this.onLogoutHandler}>
+                <i className="fas fa-sign-out-alt"></i>
+            </a>
+
         )
     }
 }

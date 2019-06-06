@@ -69,7 +69,7 @@ class Camera extends Component {
 
     render() {
         return (
-            <div className="camera-container">
+            <div>
                 <video className="camera" autoPlay></video>
                 <canvas className="hide"></canvas>
                 {/*<div id="code"></div>*/}
