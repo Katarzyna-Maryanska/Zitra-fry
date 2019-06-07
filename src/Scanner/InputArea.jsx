@@ -14,8 +14,11 @@ class InputArea extends React.Component{
 
     onSubmitHandler = (event) => {
         event.preventDefault();
-        this.props.getProduct(this.state.code);
-        this.props.showOrderText();
+        if (this.state.code.length !== 8) {
+            alert("Kod zamówienia powinien mieć 8 znaków")
+        } else {
+            this.props.onCodeTyped(this.state.code);
+        }
     };
 
     render() {

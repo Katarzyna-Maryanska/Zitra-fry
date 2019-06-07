@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Scanner.css";
+import deliveryService from "../DeliveryService"
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Camera from "./Camera/Camera";
@@ -17,46 +18,38 @@ class Scanner extends React.Component {
         };
     }
 
-    getProduct(code) {
-        http
-            .get(`/api/deliverers/deliveries/human-ids/${code}/products`)
-            .then((response) => {
-                this.setState({products: response.data})
-            })
-            .catch()
-    }
-
     cameraCodeHandler = (code) => {
         if (this.state.lastScannedCode !== code) {
             this.setState({lastScannedCode: code});
-            this.getProduct(code);
+            deliveryService
+                .getDeliveryProduct(code)
+                .then((products) => {
+                    this.setState({
+                        products: products
+                    })
+                })
+                .catch((error) => alert("Numer zamówienia nie odnaleziony"))
         }
-    };
-
-    onAcceptCodeClickHandler = () => {
-        this.setState({
-            showInputArea: false
-        })
     };
 
     render() {
         return(
             <div className="scanner">
-                {/*<label className="scan-code-text">Zeskanuj kod QR</label>*/}
                 <Camera getCodeCallback={this.cameraCodeHandler}/>
 
                 <ListGroup className="order-container">
                     {this.state.showInputArea ?
                         <InputArea
-                            getProduct={(code) => this.getProduct(code)}
-                            showOrderText={() => this.onAcceptCodeClickHandler()}
+                            onCodeTyped = {(code) => deliveryService
+                                .getDeliveryProduct(code)
+                                .then((products) => {
+                                    this.setState({
+                                        products: products
+                                    })
+                                }).catch((error) => alert("Numer zamówienia nie odnaleziony"))
+                            }
                         /> : null
                     }
-                    {!this.state.showInputArea &&
-                    <ListGroup.Item
-                        variant="secondary"
-                        onClick={this.onAcceptCodeClickHandler}>
-                    Zamówienie</ListGroup.Item>}
 
                     <ListGroup className="order-group-scroll">
                         {this.state.products.map((item, index) => {

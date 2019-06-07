@@ -9,7 +9,8 @@ class DeliveryRoute extends React.Component{
         super(props);
         this.state = {
             route: null,
-            visitedPickUpPoints: []
+            visitedPickUpPoints: [],
+            showModal: false
         }
     }
 
@@ -61,16 +62,17 @@ class DeliveryRoute extends React.Component{
                                 <ListGroup.Item
                                     variant="action"
                                     className="flex">
-                                    {pickUpPoint.street} {pickUpPoint.buildingNumber}<br/>
-                                    {pickUpPoint.postalCode} {pickUpPoint.city}
+                                    <div className="pickUpPoint">
+                                        {pickUpPoint.street} {pickUpPoint.buildingNumber}<br/>
+                                        {pickUpPoint.postalCode} {pickUpPoint.city}
+                                    </div>
                                     <Button
                                         variant={"primary"}
                                         disabled={this.state.visitedPickUpPoints.includes(pickUpPoint.id)}
                                         onClick={(e) => {
                                             e.preventDefault();
                                             this.checkIn(pickUpPoint.id);
-                                        }}>Już jestem!
-                                    </Button>
+                                        }}>Już jestem!</Button>
                                 </ListGroup.Item>
                             </ListGroup>
                         )

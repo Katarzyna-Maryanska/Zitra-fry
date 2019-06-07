@@ -23,10 +23,6 @@ class Camera extends Component {
 
         this.worker.addEventListener('message', (event) => {
             const code = event.data.data;
-            const htmlCode = document.createTextNode(event.data.data);
-            document.querySelector('#code').innerHTML = '';
-            document.querySelector('#code').appendChild(htmlCode);
-
             this.props.getCodeCallback(code);
         });
 

@@ -2,3 +2,15 @@
     width: 75vw;
     margin: 0 auto;
 }
+
+.form-control-scanner {
+    text-transform: uppercase;
+}
+
+.form-control-scanner::placeholder {
+    text-transform: lowercase;
+}
+
+.form-control-scanner::placeholder::first-letter {
+    text-transform: uppercase;
+}
