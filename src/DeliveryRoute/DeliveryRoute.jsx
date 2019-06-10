@@ -71,6 +71,7 @@ class DeliveryRoute extends React.Component{
                                         disabled={this.state.visitedPickUpPoints.includes(pickUpPoint.id)}
                                         onClick={(e) => {
                                             e.preventDefault();
+                                            window.confirm("Czy na pewno chcesz wysłać powiadomienia do klientów?");
                                             this.checkIn(pickUpPoint.id);
                                         }}>Już jestem!</Button>
                                 </ListGroup.Item>
