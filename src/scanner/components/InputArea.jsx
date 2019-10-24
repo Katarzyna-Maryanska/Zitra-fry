@@ -7,12 +7,14 @@ import styles from "./InputArea.module.css";
 const InputArea = (props) => {
     const [code, setCode] = useState("");
 
+    const {onCodeTyped} = props;
+
     const onSubmitHandler = (event) => {
         event.preventDefault();
         if (code.length !== 8) {
             alert("Kod zamówienia powinien mieć 8 znaków")
         } else {
-            props.onCodeTyped(code);
+            onCodeTyped(code);
         }
     };
 

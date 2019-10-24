@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from "./Logout.module.css"
-import {http} from "../Service/http";
+import {http} from "../service/http";
 
 const Logout = (props) => {
+
+    const {onLogout} = props;
 
     const onLogoutHandler = (event) => {
         event.preventDefault();
@@ -11,7 +13,7 @@ const Logout = (props) => {
             .then((response) => {
                 console.log(response );
                 localStorage.clear();
-                props.onLogout()
+                onLogout()
             })
             .catch();
     };

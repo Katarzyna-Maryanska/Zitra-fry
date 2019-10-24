@@ -115,7 +115,7 @@ function checkValidServiceWorker(swUrl, config) {
           });
         });
       } else {
-        // Service Worker found. Proceed as normal.
+        // service Worker found. Proceed as normal.
         registerValidSW(swUrl, config);
       }
     })

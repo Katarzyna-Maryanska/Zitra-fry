@@ -4,6 +4,8 @@ import styles from './Camera.module.css';
 
 const Camera = (props) => {
 
+    const {getCodeCallback} = props;
+
     let video = useRef();
     let canvas = useRef();
     let canvasContext = useRef();
@@ -17,7 +19,7 @@ const Camera = (props) => {
         worker = new Worker();
         worker.addEventListener('message', (event) => {
             const code = event.data.data;
-            props.getCodeCallback(code);
+            getCodeCallback(code);
         });
 
         navigator.mediaDevices
@@ -44,7 +46,7 @@ const Camera = (props) => {
 
                 });
             });
-    }, [props]);
+    }, [getCodeCallback]);
 
 
     const captureFrame = () => {
@@ -64,7 +66,6 @@ const Camera = (props) => {
         <div>
             <video className={styles.camera} autoPlay></video>
             <canvas className={styles.hide}></canvas>
-            {/*<div id="code"></div>*/}
         </div>
     )
 };

@@ -1,17 +1,19 @@
 import {useEffect} from 'react';
-import history from '../Service/history';
+import history from '../../app/service/history';
 
 const Authorized = (props) => {
 
+    const {children, loggedIn} = props;
+
     useEffect(() => {
-        if (!props.loggedIn) {
+        if (!loggedIn) {
             history.push('/fry/login');
         }
-    }, [props]);
+    }, [loggedIn]);
 
 
-    if (props.loggedIn) {
-        return props.children;
+    if (loggedIn) {
+        return children;
     }
 
     return null;

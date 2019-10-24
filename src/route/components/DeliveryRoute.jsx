@@ -2,25 +2,26 @@ import React, {useState, useEffect} from 'react';
 import styles from './DeliveryRoute.module.css';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
-import {http} from '../Service/http';
+import {http} from '../../app/service/http';
+// import {checkIn, getVisitedPickupPoints} from "../service/route-service";
 
 const DeliveryRoute = (props) => {
    const [route, setRoute] = useState("");
    const [visitedPickUpPoints, setVisitedPickUpPoints] = useState([]);
 
+   const {store} = props;
 
-    useEffect((props) => {
+    useEffect(() => {
         http
-            .get(`/deliverers/stores/${props.store.id}/routes`)
+            .get(`/deliverers/stores/${store.id}/routes`)
             .then(response => {
                 setRoute(response.data);
-                getVisitedPickupPoints(props.store.id, response.data.id)
+                getVisitedPickupPoints(store.id, response.data.id)
             });
-    }, [props]);
+    }, [store]);
 
-
-    const checkIn = (storePickUpPointId) => {
-        const storeId = props.store.id;
+    const checkIn = (storePickUpPointId, store, route) => {
+        const storeId = store.id;
         const routeId = route.id;
 
         http

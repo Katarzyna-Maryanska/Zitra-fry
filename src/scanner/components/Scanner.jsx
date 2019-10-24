@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import styles from "./Scanner.module.css";
-import deliveryService from "../DeliveryService"
+import {getDeliveryProduct} from "../service/deliveryService";
 import ListGroup from 'react-bootstrap/ListGroup';
 import Camera from "./Camera/Camera";
 import InputArea from "./InputArea";
 
-const Scanner = () => {
+const Scanner = (props) => {
 
     const [products, setProducts] = useState([]);
     const [lastScannedCode, setLastScannedCode] = useState("");
@@ -14,10 +14,10 @@ const Scanner = () => {
     const cameraCodeHandler = (code) => {
         if (lastScannedCode !== code) {
             setLastScannedCode(code);
-            deliveryService
-                .getDeliveryProduct(code)
-                .then((products) => {setProducts(products)})
-                .catch((error) => alert("Numer zamówienia nie odnaleziony"))
+
+            getDeliveryProduct(code)
+            .then((products) => {setProducts(products)})
+            .catch((error) => alert("Numer zamówienia nie odnaleziony"))
         }
     };
 
@@ -28,8 +28,8 @@ const Scanner = () => {
             <ListGroup className={styles.orderContainer}>
                 {showInputArea ?
                     <InputArea
-                        onCodeTyped = {(code) => deliveryService
-                            .getDeliveryProduct(code)
+                        onCodeTyped = {(code) =>
+                            getDeliveryProduct(code)
                             .then((products) => {setProducts(products)})
                             .catch((error) => alert("Numer zamówienia nie odnaleziony"))
                         }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from "./LoginPage.module.css"
-import authService from "./AuthService";
+import authService from "../service/authService";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -10,12 +10,14 @@ const LoginPage = (props) => {
     const [enteredPassword, setEnteredPassword] = useState("");
     const [error, setError] = useState("");
 
+    const {onLogin} = props;
+
     const onSubmitHandler = (event) => {
         event.preventDefault();
         setError("");
         authService
             .login(enteredUsername, enteredPassword)
-            .then((token) => {props.onLogin(token)})
+            .then((token) => {onLogin(token)})
             .catch((error) => setError(error));
     };
 

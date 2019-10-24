@@ -1,4 +1,4 @@
-import {http} from '../Service/http';
+import {http} from '../../app/service/http';
 
 class AuthService {
 
